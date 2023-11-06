@@ -19,7 +19,7 @@ type SchedulerTicker struct {
 	Jobs *tickerBroadcast
 }
 
-func Init() *SchedulerTicker {
+func New() *SchedulerTicker {
 	return &SchedulerTicker{
 		Cron: cron.New(cron.WithSeconds()),
 		Jobs: new(tickerBroadcast),
@@ -33,7 +33,7 @@ func (s *SchedulerTicker) Run() {
 // 每幾秒，無限迴圈執行,
 // secondTime: 每幾秒可以執行,
 // function: 要執行的 function
-func (s *SchedulerTicker) NewIntervalTask(name, spec string, function func()) error {
+func (s *SchedulerTicker) AddTask(name, spec string, function func()) error {
 	if name == "" {
 		name = xid.New().String()
 	}
@@ -67,7 +67,7 @@ func (s *SchedulerTicker) DeleteTask(taskName string) {
 	}
 }
 
-func (s *SchedulerTicker) ClearAllTask() {
+func (s *SchedulerTicker) DeleteAllTask() {
 	s.Jobs.Range(func(key string, t *Task) bool {
 		s.Cron.Remove(t.EntryID)
 		s.Jobs.Delete(t.Name)
