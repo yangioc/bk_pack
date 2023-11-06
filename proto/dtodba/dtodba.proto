@@ -29,3 +29,28 @@ message UserLoginNotic {
     string  Account     = 1;
     string  Last_token  = 2;
 }
+
+message CoolpcReadReq{
+    message Filter{
+       string Name      = 1;
+       int64 TypeId     = 2;
+       int64 PriceMin   = 3;
+       int64 PriceMax   = 4;
+       int64 StartTime  = 5;
+       int64 EndTime    = 6;
+    }
+
+    Filter DataFilter = 1;
+}
+
+message CoolpcReadRes {
+    message CoolpcData {
+        string Date    = 1;
+        string Name    = 2;
+        int64 Price    = 3;
+        int64 TypeId   = 4;
+        string TypeName= 5;
+    }
+
+    repeated CoolpcData Datas = 1;
+}
