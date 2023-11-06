@@ -1,4 +1,4 @@
-package schedulerTicker
+package crontab
 
 import (
 	"fmt"
