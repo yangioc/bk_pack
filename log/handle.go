@@ -1,4 +1,4 @@
-package mylog
+package log
 
 import (
 	"fmt"

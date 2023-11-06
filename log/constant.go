@@ -1,4 +1,4 @@
-package mylog
+package log
 
 // Log 輸出設置
 // 數值越大log越詳細 max:255
