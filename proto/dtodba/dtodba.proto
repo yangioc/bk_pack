@@ -1,0 +1,31 @@
+syntax = "proto3";
+package dtodba;
+option go_package="../dtodba";
+
+
+message UserCreateReq {
+    string  Account     = 1;
+    string  Password    = 2;
+    string  Name        = 3;
+    string  Email       = 4;
+}
+
+message UserCreateRes {
+}
+
+message UserReadReq {
+    string Account = 1; 
+}
+
+message UserReadRes {
+    string  Account     = 1;
+    string  Password    = 2;
+    string  Name        = 3;
+    string  Email       = 4;
+    string  Last_token  = 5;
+}
+
+message UserLoginNotic {
+    string  Account     = 1;
+    string  Last_token  = 2;
+}
