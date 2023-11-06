@@ -2,7 +2,6 @@ package util
 
 import (
 	"github.com/yangioc/bk_pack/dto"
-	"github.com/yangioc/bk_pack/msgpack"
 )
 
 func PackDBAReq(msgUid, request string, data []byte) ([]byte, error) {
@@ -14,24 +13,12 @@ func PackDBAReq(msgUid, request string, data []byte) ([]byte, error) {
 		return nil, err
 	}
 
-	msg, err := MsgEncode(&msgpack.BasePack{
-		UUID:    msgUid,
-		Payload: req,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return msg, nil
+	return req, nil
 }
 
 func UnpackDBARes(resData []byte) (*dto.Dto_DBA_Res, error) {
-	msg, err := MsgDecode(resData)
-	if err != nil {
-		return nil, err
-	}
-
 	res := &dto.Dto_DBA_Res{}
-	if err = Unmarshal(msg.Payload, res); err != nil {
+	if err := Unmarshal(resData, res); err != nil {
 		return nil, err
 	}
 	return res, nil
