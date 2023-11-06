@@ -1,0 +1,1 @@
+protoc --go_out=. ./dto_bk_account_service.proto

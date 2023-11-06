@@ -14,6 +14,12 @@ func Big5ToUtf8(source []byte) (string, error) {
 	return str, err
 }
 
+func Utf8ToBig5(source []byte) ([]byte, error) {
+	encoder := traditionalchinese.Big5.NewEncoder()
+	data, _, err := transform.Bytes(encoder, source)
+	return data, err
+}
+
 // 為了與 Js 統一時間單位的處理
 
 // 只能處理到秒數

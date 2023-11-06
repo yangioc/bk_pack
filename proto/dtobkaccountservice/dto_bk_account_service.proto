@@ -1,0 +1,35 @@
+syntax = "proto3";
+package dtobkaccountservice;
+option go_package="../dtobkaccountservice";
+
+message ReadUserReq {
+    string Account = 1; 
+}
+
+message ReadUserRes {
+    int64   Id          = 1;
+    string  Account     = 2;
+    string  Password    = 3;
+    string  Name        = 4;
+    string  Email       = 5;
+    string  Last_token  = 6;
+}
+
+message CreateUserReq {
+    string  Account     = 1;
+    string  Password    = 2;
+    string  Name        = 3;
+    string  Email       = 4;
+}
+
+message CreateUserRes {
+}
+
+message LoginReq {
+    string  Account     = 1;
+    string  Password    = 2;
+}
+
+message LoginRes {
+    string  Token    = 1;
+}
