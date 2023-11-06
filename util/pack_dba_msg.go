@@ -4,7 +4,7 @@ import (
 	"github.com/yangioc/bk_pack/dto"
 )
 
-func PackDBAReq(msgUid, request string, data []byte) ([]byte, error) {
+func PackDBAReq(request string, data []byte) ([]byte, error) {
 	req, err := Marshal(&dto.Dto_DBA_Req{
 		Request: request,
 		Data:    data,
