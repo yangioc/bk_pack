@@ -33,6 +33,32 @@ func Infof(format string, a ...interface{}) {
 	println(logFormat)
 }
 
+func Debug(format interface{}) {
+	if Level < Level_Debug {
+		return
+	}
+
+	logFormat := logFormat{
+		Level:   Level_Debug_str,
+		Time:    time.Now().Format(time.RFC3339),
+		Message: fmt.Sprint(format),
+	}
+	println(logFormat)
+}
+
+func Debugf(format string, a ...interface{}) {
+	if Level < Level_Debug {
+		return
+	}
+
+	logFormat := logFormat{
+		Level:   Level_Debug_str,
+		Time:    time.Now().Format(time.RFC3339),
+		Message: fmt.Sprintf(format, a...),
+	}
+	println(logFormat)
+}
+
 // func SprintInfof(format string, a ...interface{}) string {
 // 	logFormat := logFormat{
 // 		Level:   Level_Info_str,
