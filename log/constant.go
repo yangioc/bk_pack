@@ -8,11 +8,11 @@ var Level uint8 = 255
 // 0: Test log 不管輸出等級一定會輸出
 var TagMap map[uint8]struct{} = map[uint8]struct{}{}
 
-// var levelToStringMap = map[uint8]string{
-// 	Level_Error: "error",
-// 	Level_Info:  "info",
-// 	Level_Debug: "debug",
-// }
+var LevelToStringMap = map[string]uint8{
+	"error": Level_Error,
+	"info":  Level_Info,
+	"debug": Level_Debug,
+}
 
 const (
 	Level_Error = 0
