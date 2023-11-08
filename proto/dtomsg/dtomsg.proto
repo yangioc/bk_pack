@@ -2,6 +2,13 @@ syntax = "proto3";
 package dtomsg;
 option go_package="../dtomsg";
 
+message Dto_Base {
+    string UUID             = 1; // 全服務唯一編號
+    int64 StartTime         = 2; // 訊號起始時間
+    int64 ExpirationTime    = 3; // 訊號過期時間
+    bytes Payload           = 4;
+}
+
 // Msg 各服務通訊格式
 message Dto_Msg {
     string Type     = 1; // 訊號類型 "req":請求類型,需要回應結果, "notice":通知類型,不論結果都不回應

@@ -20,6 +20,77 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Dto_Base struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UUID           string `protobuf:"bytes,1,opt,name=UUID,proto3" json:"UUID,omitempty"`                      // 全服務唯一編號
+	StartTime      int64  `protobuf:"varint,2,opt,name=StartTime,proto3" json:"StartTime,omitempty"`           // 訊號起始時間
+	ExpirationTime int64  `protobuf:"varint,3,opt,name=ExpirationTime,proto3" json:"ExpirationTime,omitempty"` // 訊號過期時間
+	Payload        []byte `protobuf:"bytes,4,opt,name=Payload,proto3" json:"Payload,omitempty"`
+}
+
+func (x *Dto_Base) Reset() {
+	*x = Dto_Base{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_dtomsg_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Dto_Base) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Dto_Base) ProtoMessage() {}
+
+func (x *Dto_Base) ProtoReflect() protoreflect.Message {
+	mi := &file_dtomsg_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Dto_Base.ProtoReflect.Descriptor instead.
+func (*Dto_Base) Descriptor() ([]byte, []int) {
+	return file_dtomsg_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Dto_Base) GetUUID() string {
+	if x != nil {
+		return x.UUID
+	}
+	return ""
+}
+
+func (x *Dto_Base) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *Dto_Base) GetExpirationTime() int64 {
+	if x != nil {
+		return x.ExpirationTime
+	}
+	return 0
+}
+
+func (x *Dto_Base) GetPayload() []byte {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
 // Msg 各服務通訊格式
 type Dto_Msg struct {
 	state         protoimpl.MessageState
@@ -34,7 +105,7 @@ type Dto_Msg struct {
 func (x *Dto_Msg) Reset() {
 	*x = Dto_Msg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_dtomsg_proto_msgTypes[0]
+		mi := &file_dtomsg_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +118,7 @@ func (x *Dto_Msg) String() string {
 func (*Dto_Msg) ProtoMessage() {}
 
 func (x *Dto_Msg) ProtoReflect() protoreflect.Message {
-	mi := &file_dtomsg_proto_msgTypes[0]
+	mi := &file_dtomsg_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +131,7 @@ func (x *Dto_Msg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Dto_Msg.ProtoReflect.Descriptor instead.
 func (*Dto_Msg) Descriptor() ([]byte, []int) {
-	return file_dtomsg_proto_rawDescGZIP(), []int{0}
+	return file_dtomsg_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Dto_Msg) GetType() string {
@@ -99,7 +170,7 @@ type Dto_Msg_Res struct {
 func (x *Dto_Msg_Res) Reset() {
 	*x = Dto_Msg_Res{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_dtomsg_proto_msgTypes[1]
+		mi := &file_dtomsg_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -112,7 +183,7 @@ func (x *Dto_Msg_Res) String() string {
 func (*Dto_Msg_Res) ProtoMessage() {}
 
 func (x *Dto_Msg_Res) ProtoReflect() protoreflect.Message {
-	mi := &file_dtomsg_proto_msgTypes[1]
+	mi := &file_dtomsg_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -125,7 +196,7 @@ func (x *Dto_Msg_Res) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Dto_Msg_Res.ProtoReflect.Descriptor instead.
 func (*Dto_Msg_Res) Descriptor() ([]byte, []int) {
-	return file_dtomsg_proto_rawDescGZIP(), []int{1}
+	return file_dtomsg_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Dto_Msg_Res) GetState() int32 {
@@ -160,7 +231,15 @@ var File_dtomsg_proto protoreflect.FileDescriptor
 
 var file_dtomsg_proto_rawDesc = []byte{
 	0x0a, 0x0c, 0x64, 0x74, 0x6f, 0x6d, 0x73, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06,
-	0x64, 0x74, 0x6f, 0x6d, 0x73, 0x67, 0x22, 0x4b, 0x0a, 0x07, 0x44, 0x74, 0x6f, 0x5f, 0x4d, 0x73,
+	0x64, 0x74, 0x6f, 0x6d, 0x73, 0x67, 0x22, 0x7e, 0x0a, 0x08, 0x44, 0x74, 0x6f, 0x5f, 0x42, 0x61,
+	0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x55, 0x55, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x55, 0x55, 0x49, 0x44, 0x12, 0x1c, 0x0a, 0x09, 0x53, 0x74, 0x61, 0x72, 0x74, 0x54,
+	0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x53, 0x74, 0x61, 0x72, 0x74,
+	0x54, 0x69, 0x6d, 0x65, 0x12, 0x26, 0x0a, 0x0e, 0x45, 0x78, 0x70, 0x69, 0x72, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x45, 0x78,
+	0x70, 0x69, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07,
+	0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x07, 0x50,
+	0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x22, 0x4b, 0x0a, 0x07, 0x44, 0x74, 0x6f, 0x5f, 0x4d, 0x73,
 	0x67, 0x12, 0x12, 0x0a, 0x04, 0x54, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x04, 0x54, 0x79, 0x70, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
@@ -188,10 +267,11 @@ func file_dtomsg_proto_rawDescGZIP() []byte {
 	return file_dtomsg_proto_rawDescData
 }
 
-var file_dtomsg_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_dtomsg_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_dtomsg_proto_goTypes = []interface{}{
-	(*Dto_Msg)(nil),     // 0: dtomsg.Dto_Msg
-	(*Dto_Msg_Res)(nil), // 1: dtomsg.Dto_Msg_Res
+	(*Dto_Base)(nil),    // 0: dtomsg.Dto_Base
+	(*Dto_Msg)(nil),     // 1: dtomsg.Dto_Msg
+	(*Dto_Msg_Res)(nil), // 2: dtomsg.Dto_Msg_Res
 }
 var file_dtomsg_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -208,7 +288,7 @@ func file_dtomsg_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_dtomsg_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Dto_Msg); i {
+			switch v := v.(*Dto_Base); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -220,6 +300,18 @@ func file_dtomsg_proto_init() {
 			}
 		}
 		file_dtomsg_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Dto_Msg); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_dtomsg_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Dto_Msg_Res); i {
 			case 0:
 				return &v.state
@@ -238,7 +330,7 @@ func file_dtomsg_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_dtomsg_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

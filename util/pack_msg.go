@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/yangioc/bk_pack/msgpack"
+	"github.com/yangioc/bk_pack/proto/dtomsg"
 	"github.com/yangioc/bk_pack/staticdata"
 )
 
@@ -17,9 +17,9 @@ import (
 // @return *DecodeResponse 解析完成的 code & payload (raw data)
 
 // @return error
-func MsgDecode(data []byte) (*msgpack.BasePack, error) {
+func MsgDecode(data []byte) (*dtomsg.Dto_Base, error) {
 	dataLen := len(data)
-	msg := &msgpack.BasePack{}
+	msg := &dtomsg.Dto_Base{}
 	if dataLen < staticdata.UUIDLen {
 		return msg, fmt.Errorf("data len=%v is invalid", dataLen)
 	}
@@ -39,7 +39,7 @@ func MsgDecode(data []byte) (*msgpack.BasePack, error) {
 // @return []byte 編碼後的位元組陣列
 
 // @return error
-func MsgEncode(data *msgpack.BasePack) ([]byte, error) {
+func MsgEncode(data *dtomsg.Dto_Base) ([]byte, error) {
 	if data.UUID == "" {
 		return nil, errors.New("[MsgEncode] uuid is empty.")
 	}
