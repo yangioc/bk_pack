@@ -1,0 +1,18 @@
+syntax = "proto3";
+package dtomsg;
+option go_package="../dtomsg";
+
+// Msg 各服務通訊格式
+message Dto_Msg {
+    string Type     = 1; // 訊號類型 "req":請求類型,需要回應結果, "notice":通知類型,不論結果都不回應
+    string Request  = 2; // 請求任務
+    bytes Data      = 3;
+}
+
+// Request 類型回應格式
+message Dto_Msg_Res {
+    int32 State     = 1; // 狀態
+    string Message  = 2; // 提示訊息
+    string Request  = 3; // 對應請求任務
+    bytes Data      = 4;
+}
