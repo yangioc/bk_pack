@@ -161,16 +161,16 @@ func HtmlLoopFilterOne(tokenizer *html.Tokenizer, filterMap map[types.TokenTypeN
 			// 處理前一次篩選器
 			for filter := range lasttargetFilters {
 				if (util.FastSearchWithInt(FilterOperation_GetSubcContent, filter.Operation)) != -1 {
-					str, _ := util.Big5ToUtf8(tokenizer.Raw())
-					filter.SubContent = append(filter.SubContent, str)
+					data, _ := util.Big5ToUtf8(tokenizer.Raw())
+					filter.SubContent = append(filter.SubContent, string(data))
 				}
 			}
 
 			// 取得內文處理
 			for filter := range targetFilters {
 				if (util.FastSearchWithInt(FilterOperation_GetContent, filter.Operation)) != -1 {
-					str, _ := util.Big5ToUtf8(tokenizer.Raw())
-					filter.Content = append(filter.Content, str)
+					data, _ := util.Big5ToUtf8(tokenizer.Raw())
+					filter.Content = append(filter.Content, string(data))
 				}
 			}
 

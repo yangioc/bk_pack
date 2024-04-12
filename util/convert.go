@@ -8,15 +8,27 @@ import (
 	"golang.org/x/text/transform"
 )
 
-func Big5ToUtf8(source []byte) (string, error) {
+func Big5ToUtf8(source []byte) ([]byte, error) {
 	big5Toutf8 := traditionalchinese.Big5.NewDecoder()
-	str, _, err := transform.String(big5Toutf8, string(source))
-	return str, err
+	data, _, err := transform.Bytes(big5Toutf8, source)
+	return data, err
 }
 
 func Utf8ToBig5(source []byte) ([]byte, error) {
 	encoder := traditionalchinese.Big5.NewEncoder()
 	data, _, err := transform.Bytes(encoder, source)
+	return data, err
+}
+
+func Big5ToUtf8Str(source string) (string, error) {
+	big5Toutf8 := traditionalchinese.Big5.NewDecoder()
+	data, _, err := transform.String(big5Toutf8, source)
+	return data, err
+}
+
+func Utf8ToBig5Str(source string) (string, error) {
+	encoder := traditionalchinese.Big5.NewEncoder()
+	data, _, err := transform.String(encoder, source)
 	return data, err
 }
 
